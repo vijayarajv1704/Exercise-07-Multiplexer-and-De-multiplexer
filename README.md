@@ -54,35 +54,71 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: 212221230094
+RegisterNumber:A.Sharmila
 */
+```
+## Multiplexer
+module ex07(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+
+## De-multiplexer
+module ex07(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
 
 
-
-
-
+```
 
 ### RTL LOGIC  
 
+Multiplexer :
 
+![exp7](https://user-images.githubusercontent.com/94506182/200120639-91c94240-235c-4372-b175-f073926989eb.png)
 
+De-multiplexer :
 
-
+![E7 2](https://user-images.githubusercontent.com/94506182/200120680-a81f079f-8ce4-4152-a58b-0da67c373c7f.png)
 
 
 
 ### TIMING DIGRAMS  
+Multiplexer WHEN I0=1
+![T1](https://user-images.githubusercontent.com/94506182/200120770-5bcd8773-1d3e-41db-ba5e-fe63745d2d04.png)
+WHEN I1=1
+![T2](https://user-images.githubusercontent.com/94506182/200120822-44ff6801-2e2b-4246-9f9b-10f2ccde47a9.png)
+WHEN I2=1
+![T3](https://user-images.githubusercontent.com/94506182/200120884-90baba6f-fdf6-4c66-85a5-dea5749ca078.png)
+WHEN I3=1
+![T4](https://user-images.githubusercontent.com/94506182/200120931-70aa71b7-0917-4ee6-b4ac-a3178ba86a35.png)
+De-multiplexer :
+![T5](https://user-images.githubusercontent.com/94506182/200121004-7a1b0c1b-2f91-4c19-bb7b-d33d55ba835d.png)
+![T8](https://user-images.githubusercontent.com/94506182/200121065-48879ce1-e954-4d63-bbb4-93867973f5b1.png)
 
-
-
-
-
-### TRUTH TABLE 
-
+De-multiplexer :
+![T9](https://user-images.githubusercontent.com/94506182/200121124-fd2bcaa2-66d0-4b74-906a-d311119492c8.png)
 
 
 
 
 
 ### RESULTS 
+4 X1 multiplexer and 1X4 de multiplexer has been implemented using verilog and outputs are
+validated.
